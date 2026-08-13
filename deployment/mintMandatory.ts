@@ -4,30 +4,37 @@ const { ethers } = await network.create();
 
 async function main() {
 
-    const contractAddress = "0x956dAf34d48E17E1860D1062606C70bd98b3D4B5";
+    const contractAddress = process.env.NFT_CONTRACT_ADDR;
+    if (!contractAddress)
+        throw new Error("NFT_CONTRACT_ADDR is not defined");
 
     const nft = await ethers.getContractAt(
         "MyNFT",
         contractAddress
     );
 
-    const [owner] = await ethers.getSigners();
+    const nftOwner = process.env.NEW_NFT_OWNER_ADDRESS;
+    if (!nftOwner)
+        throw new Error("NEW_NFT_OWNER_ADDRESS is not defined");
 
-    const metadataURI = "ipfs://bafkreigf6ulfoio4zfylbugifko22woryuwiysvhacmc25s4sc736n4a2y";
-
-    const tx = await nft.safeMint(owner.address, metadataURI);
-
+    const metadataURI = process.env.NFT_METADATA_URI;
+    if (!metadataURI)
+        throw new Error("NFT_METADATA_URI is not defined");
+    
+    const tx = await nft.safeMint(nftOwner, metadataURI);
     await tx.wait();
 
+    const totalMinted = await nft.totalMinted();
+    const tokenId = totalMinted - 1n;
+
     console.log("NFT minted");
-    console.log("Owner:", owner.address);
-    console.log("Token ID: 0");
+    console.log("Owner:", nftOwner);
+    console.log("Token ID:", tokenId);
     console.log("Metadata:", metadataURI);
 
 }
 
-main()
-    .catch((error) => {
-        console.error(error);
-        process.exitCode = 1;
-    });
+main().catch((error) => {
+    console.error(error);
+    process.exitCode = 1;
+});

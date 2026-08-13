@@ -3,7 +3,7 @@ import { network } from "hardhat";
 const { ethers } = await network.create();
 
 async function main() {
-
+    
     const contractAddress = process.env.NFT_CONTRACT_ADDR;
     if (!contractAddress)
         throw new Error("NFT_CONTRACT_ADDR is not defined");
@@ -13,16 +13,12 @@ async function main() {
         contractAddress
     );
 
-    console.log("Name:", await nft.name());
-    console.log("Symbol:", await nft.symbol());
-    console.log("Contract Owner:", await nft.owner());
-
-    const tokenId = process.env.NFT_TOKEN_ID;
-    if (!tokenId)
+    const tokenid = process.env.NFT_TOKEN_ID;
+    if (!tokenid)
         throw new Error("NFT_TOKEN_ID is not defined");
 
-    console.log("NFT Owner :", await nft.ownerOf(tokenId));
-    console.log("NFT URI   :", await nft.tokenURI(tokenId));
+    console.log("Owner :", await nft.ownerOf(tokenid));
+    console.log("URI   :", await nft.tokenURI(tokenid));
 }
 
 main().catch((error) => {

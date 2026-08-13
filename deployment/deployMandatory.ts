@@ -10,12 +10,14 @@ async function main() {
 
     await nft.waitForDeployment();
 
-    console.log("Contract:", await nft.getAddress());
-    console.log(`https://sepolia.etherscan.io/address/${await nft.getAddress()}`)
+    const contractAddress = await nft.getAddress();
+
+    console.log("Contract:", contractAddress);
+    console.log(`https://sepolia.etherscan.io/address/${contractAddress}`)
 
 }
 
 main().catch((error) => {
-        console.error(error);
-        process.exitCode = 1;
-    });
+    console.error(error);
+    process.exitCode = 1;
+});
