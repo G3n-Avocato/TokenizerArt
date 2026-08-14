@@ -24,6 +24,7 @@ NFT_CONTRACT_ADDR=
 NFT_METADATA_URI=
 NFT_TOKEN_ID=
 NEW_NFT_OWNER_ADDRESS=
+ETHERSCAN_API_KEY=
 ```
 
 ## Installation
@@ -57,6 +58,14 @@ The resulting contract address must then be added to: `NFT_CONTRACT_ADDR` in `.e
 The RPC endpoint used to communicate with Sepolia is configured in `hardhat.config.ts`.  
 
 The contract is deployed by the project owner. The deployer becomes the owner of the smart contract.  
+
+## Verify contract on Etherscan
+
+With `ETHERSCAN_API_KEY`, you can verify the contract using Etherscan's verification tools.  
+
+```bash
+npx hardhat verify --network sepolia "NFT_CONTRACT_ADDR"
+```
 
 ## Mint
 Minting is restricted to the contract owner.  
@@ -96,6 +105,6 @@ associated with the NFT.
 
 Network: Ethereum Sepolia
 
-Contract: 0x956dAf34d48E17E1860D1062606C70bd98b3D4B5
+Contract: 0xF7c1638280ef03fdC46eBBf1e03246fD3D366627
 
 The contract can be inspected using a Sepolia blockchain explorer.

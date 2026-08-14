@@ -165,6 +165,7 @@ NFT_CONTRACT_ADDR=
 NFT_METADATA_URI=
 NFT_TOKEN_ID=
 NEW_NFT_OWNER_ADDRESS=
+ETHERSCAN_API_KEY=
 ```
 Update the `NFT_CONTRACT_ADDR` variable in the event of a new deployment.  
 Update the `SEPOLIA_RPC_URL` if the URL changes.  
@@ -207,9 +208,9 @@ npx hardhat run deployment/verifyMandatory.ts --network sepolia
 
 * Network: `Ethereum Sepolia`  
   
-* Contract MyNFT address: `0x956dAf34d48E17E1860D1062606C70bd98b3D4B5`  
+* Contract MyNFT address: `0xF7c1638280ef03fdC46eBBf1e03246fD3D366627`  
 
-* Explorer: `https://sepolia.etherscan.io/address/0x956dAf34d48E17E1860D1062606C70bd98b3D4B5`  
+* Explorer: `https://sepolia.etherscan.io/address/0xF7c1638280ef03fdC46eBBf1e03246fD3D366627`  
 
 * NFT metadata URI: `ipfs://bafkreigf6ulfoio4zfylbugifko22woryuwiysvhacmc25s4sc736n4a2y`  
 

@@ -17,12 +17,6 @@ async function main() {
     console.log("Symbol:", await nft.symbol());
     console.log("Contract Owner:", await nft.owner());
 
-    const tokenId = process.env.NFT_TOKEN_ID;
-    if (!tokenId)
-        throw new Error("NFT_TOKEN_ID is not defined");
-
-    console.log("NFT Owner :", await nft.ownerOf(tokenId));
-    console.log("NFT URI   :", await nft.tokenURI(tokenId));
 }
 
 main().catch((error) => {
